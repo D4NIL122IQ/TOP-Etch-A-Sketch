@@ -5,12 +5,19 @@
 }
 header{
     text-align: center;
+    background-color: blanchedalmond;
+}
+body{
+    background-color: whitesmoke;
+    font-size: large;
+    gap: 10px;
 }
 .container{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
 }
+
 .drawing {
     height: 600px;
     width: 600px;
@@ -18,25 +25,59 @@ header{
     border: 1px solid black;
     display: flex;
 }
-.information{ 
 
+.information{ 
+    display: flex;
     flex-direction: column;
     height: 400px;
     width: 400px;
     border: 2px solid black ;
 }
+
+.size{
+    display: flex;
+    flex-direction: row;
+}
+
 .column{
     display: flex;
     flex-direction: column;
 }
+
 #case{
     border: 1px solid black
 }
+
+button{
+    width: 70px;
+    height: 30px;
+}
+
 @media screen  and (max-width: 600px){
     
     .drawing {
      height: 320px;
      width: 320px;
+     border: 1px solid black;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .information{ 
+        flex-direction: column;
+        height: 200px;
+        width: 300px;
+        border: 2px solid black ;
+    }
+}
+
+@media screen  and (max-width: 320px){
+    
+    .drawing {
+     height: 300px;
+     width: 300px;
      border: 1px solid black;
     }
     .container{
