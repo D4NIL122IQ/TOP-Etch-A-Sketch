@@ -1,53 +1,51 @@
-const drawingSpace = document.querySelector(".drawing")
-const color = document.querySelector("#couleur")
-const sizeChoice = document.querySelectorAll('input')
-let tailleEcran = window.innerWidth
-let sizeSpace;
-(tailleEcran > 600)?sizeSpace = 600 : sizeSpace = 320;
+const drawingSpace = document.querySelector(".drawing");
+const color = document.querySelector("#color");
+const sizeChoice = document.querySelector('#size');
+let drawingColor = "#000000";
+let sizeSquart = 16;
 
-console.log(tailleEcran)
 
-function setGrid(value){
+let sizeDrawingSpace;
+(window.innerWidth > 600)?sizeDrawingSpace = 600 : (window.innerWidth >320)? sizeDrawingSpace = 320 : sizeDrawingSpace = 300;
+
+
+function setGrid(sizeSquart){
     drawingSpace.innerHTML = "";
-    let sizeDiv = sizeSpace / value;
+    let sizeDiv = sizeDrawingSpace / sizeSquart;
 
-    for (let i = 0; i < value; i++) {
-        let column = document.createElement('div')
+    for (let i = 0; i < sizeSquart; i++) {
+        let column = document.createElement('div');
         column.className = 'column'
         
-        for (let j = 0; j < value; j++) {
+        for (let j = 0; j < sizeSquart; j++) {
             let cases = document.createElement('div');
             cases.id = 'case';
-            cases.style.height = sizeDiv + "px"
-            cases.style.width = sizeDiv + "px"
-            column.appendChild(cases)
+            cases.style.height = sizeDiv + "px";
+            cases.style.width = sizeDiv + "px";
+            column.appendChild(cases);
         }
-        drawingSpace.appendChild(column)
+        drawingSpace.appendChild(column);
     }
-    let cases = document.querySelectorAll("#case") 
+    let cases = document.querySelectorAll("#case"); 
      cases.forEach((squart) => {
         squart.addEventListener("mousemove", ()=>{
-            squart.style.backgroundColor = 'green'
+            squart.style.backgroundColor = drawingColor;
         })
     })
 }
 
-setGrid(16)
-sizeChoice.forEach((input)=> {
-    input.addEventListener("click" , ()=> {
-        setGrid(parseInt(input.id))
-    })
+setGrid(sizeSquart);
+
+sizeChoice.addEventListener("change",()=>{
+    sizeSquart = sizeChoice.value;
+    document.querySelector('#value').innerHTML = sizeSquart;
+    setGrid(sizeSquart);
 })
 
+document.querySelector("#reset").addEventListener("click", ()=>{ setGrid(sizeSquart)});
 
-
-// color.addEventListener("input" ,() => {
-//     console.log(color.value)
-// })
-
-
-
-// drawingSpace.addEventListener("mousemove" ,() => {
-//    document.querySelector(".drawing").style.backgroundColor = 'grey' ;
-// })
+color.addEventListener("input" , ()=> {
+    drawingColor = color.value;
+    setGrid(sizeSquart);
+})
 
