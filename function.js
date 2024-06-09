@@ -1,13 +1,12 @@
 const drawingSpace = document.querySelector(".drawing");
 const color = document.querySelector("#color");
 const sizeChoice = document.querySelector('#size');
+
 let drawingColor = "#000000";
 let sizeSquart = 16;
 
-
 let sizeDrawingSpace;
 (window.innerWidth > 600)?sizeDrawingSpace = 600 : (window.innerWidth >320)? sizeDrawingSpace = 320 : sizeDrawingSpace = 300;
-
 
 function setGrid(sizeSquart){
     drawingSpace.innerHTML = "";
@@ -38,7 +37,7 @@ setGrid(sizeSquart);
 
 sizeChoice.addEventListener("change",()=>{
     sizeSquart = sizeChoice.value;
-    document.querySelector('#value').innerHTML = sizeSquart;
+    document.querySelector('#value').innerHTML = sizeSquart +"x"+ sizeSquart;
     setGrid(sizeSquart);
 })
 
